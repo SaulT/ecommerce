@@ -1,3 +1,21 @@
+.Remerce {
+  background: linear-gradient(to right, rgba(153, 38, 240, 0.95), #22cde3f2);
+  padding: 1rem 0 0 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+.RemerceLogo{
+  color:white;
+}
+.Carousel {
+  padding-top: 10rem;
+}
+.TitleCarousel{
+ padding-top: 20px;
+}
 .App {
   text-align: center;
 }

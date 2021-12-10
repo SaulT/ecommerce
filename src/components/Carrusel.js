@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
 import Carousel from 'react-material-ui-carousel'
 import { Paper, Button } from '@mui/material'
 import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
 
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import Rating from '@mui/material/Rating';
+
+import '../App.css';
+
+// import Card from '@mui/material/Card';
+// import CardContent from '@mui/material/CardContent';
+// import CardMedia from '@mui/material/CardMedia';
+
+import { getAllProducts } from '../services/getAllProducts'
 
 function Item(props)
 {
@@ -34,9 +44,19 @@ export default function Carrusel(props){
         name: "Random Name #3",
         description: "Prueba de items"
     }
-]
+  ]
+
+  const [list, setList] = useState([]);
+  useEffect(() => {
+    getAllProducts()
+      .then(items => {
+        setList(items)
+      })
+    return []
+  })
+
   return(
-    <div>
+    <div className="Carousel">
       <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={3}>
         <Grid item xs>
@@ -85,9 +105,35 @@ export default function Carrusel(props){
 
         }}
       >
-        {
+        {/* {
           items.map( (item, i) => <Item key={i} item={item} /> )
-        }
+        } */}
+        {list.map(result1 =>
+          <Paper>
+            <Grid container spacing={2}>
+              <Grid item xs={8}>
+              <Typography gutterBottom variant="h4" component="div" className="TitleCarousel" >
+                {result1.title}
+              </Typography>
+              <Typography gutterBottom variant="subtitle2" component="div">
+                {result1.category.toUpperCase()}
+              </Typography>
+              <Rating name="read-only" value={result1.rating.rate} readOnly size="small"/>
+              <Button className="CheckButton">
+                  Ver más
+              </Button>
+              </Grid>
+              <Grid item xs={4}>
+                <CardMedia
+                      component="img"
+                      height="280"
+                      image={result1.image}
+                      alt={result1.title}
+                    />
+              </Grid>
+            </Grid>
+          </Paper>
+        )}
 
       </Carousel>
         </Grid>

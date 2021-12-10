@@ -84,7 +84,7 @@ export default function Cards(){
                   </CardActionArea>
                   <CardActions>
                     <Button size="small" color="primary">
-                      Share
+                      Ver más
                     </Button>
                   </CardActions>
                 </Card>

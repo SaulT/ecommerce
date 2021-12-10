@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -22,6 +22,8 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 
+import '../App.css';
+
 export default function Navbar(){
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -31,14 +33,14 @@ export default function Navbar(){
   }));
 
   return(
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }} className="Remerce">
     <Grid container spacing={3}>
       <Grid item xs>
       </Grid>
       <Grid item xs={9}>
       <Grid container spacing={3}>
         <Grid item xs={2}>
-          <Typography variant="h3" gutterBottom component="div">
+          <Typography variant="h3" gutterBottom component="div"  className="RemerceLogo">
             ReMerce
           </Typography>
         </Grid>
