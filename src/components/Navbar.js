@@ -27,6 +27,14 @@ import '../App.css';
 
 import { getAllProducts } from '../services/getAllProducts'
 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from 'react-router-dom'
+
+
 export default function Navbar(){
   
   const { register, handleSubmit, formState : { errors } } = useForm();
@@ -60,9 +68,12 @@ export default function Navbar(){
       <Grid item xs={9}>
       <Grid container spacing={3}>
         <Grid item xs={2}>
-          <Typography variant="h3" gutterBottom component="div"  className="RemerceLogo">
-            ReMerce
-          </Typography>
+          <Link to="/">
+            <Typography variant="h3" gutterBottom component="div"  className="RemerceLogo">
+              ReMerce
+            </Typography>
+          </Link>
+
         </Grid>
         <Grid item xs={8} onSubmit={handleSubmit(onSubmit)}>
           <Paper
@@ -84,8 +95,14 @@ export default function Navbar(){
         </Grid>
         <Grid item xs={2}>
           <Stack direction="row" spacing={1}>
-          <Button variant="outlined">Signup</Button>
-          <Button variant="outlined">Login</Button>
+          
+          <Link to="/signup">
+            <Button variant="outlined">Signup</Button>
+          </Link>
+          <Link to="/login">
+            <Button variant="outlined">Login</Button>
+          </Link>
+
             <IconButton color="secondary" aria-label="add an alarm">
               <AccountCircleIcon />
             </IconButton>

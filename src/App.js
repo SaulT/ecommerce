@@ -1,22 +1,47 @@
 import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
-import Carrusel from './components/Carrusel';
-import Cards from './components/Cards';
+import Home from './components/Home';
 import Grid from './components/Grid';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Footer from './components/Footer';
 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from 'react-router-dom'
+
 function App() {
   return (
     <div>
+      <Router>
       <Navbar/>
-      <Carrusel/>
-      <Cards/>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/signup">Signup</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/signup" element={<Signup/>} />
+          <Route path="/login" element={<Login/>} />
+        </Routes>
+      </Router>
+
       {/* <Grid/> */}
-      <Login/>
-      <Signup/>
+      {/* <Login/>
+      <Signup/> */}
       <Footer/>
     </div>
   );
