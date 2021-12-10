@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { useForm } from "react-hook-form";
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -24,7 +25,26 @@ import Container from '@mui/material/Container';
 
 import '../App.css';
 
+import { getAllProducts } from '../services/getAllProducts'
+
 export default function Navbar(){
+  
+  const { register, handleSubmit, formState : { errors } } = useForm();
+
+  const [list, setList] = useState([]);
+
+  const onSubmit = (data) => {
+    console.log('DATA', data.buscar)
+
+    getAllProducts()
+      .then(items => {
+        setList(items)
+      })
+      console.log('L1', list)
+    let resultado = list.filter(element => element.title.toLowerCase().includes(data.buscar.toLowerCase()))
+    console.log(resultado)
+    //return data
+  }
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
     padding: theme.spacing(1),
@@ -44,7 +64,7 @@ export default function Navbar(){
             ReMerce
           </Typography>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={8} onSubmit={handleSubmit(onSubmit)}>
           <Paper
             component="form"
             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 500 }}
@@ -54,6 +74,8 @@ export default function Navbar(){
               sx={{ ml: 1, flex: 1 }}
               placeholder="¿Qué estas buscando?"
               inputProps={{ 'aria-label': '¿Qué estas buscando?' }}
+              name="buscar"
+              {...register("buscar")}
             />
             <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
               <SearchIcon />

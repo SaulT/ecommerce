@@ -33,7 +33,6 @@ export default function Cards(){
         //const { results } = items
         //setList(results)
         setList(items)
-        console.log(items)
       })
     return []
   })
@@ -78,7 +77,7 @@ export default function Cards(){
                       </Typography>
                       <Rating name="read-only" value={result1.rating.rate} readOnly size="small"/>
                       <Typography variant="h6" color="text.secondary">
-                        S/. {result1.price}
+                        $ {result1.price}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
