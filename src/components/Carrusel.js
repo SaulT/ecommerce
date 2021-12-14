@@ -17,6 +17,13 @@ import '../App.css';
 
 import { getAllProducts } from '../services/getAllProducts'
 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from 'react-router-dom'
+
 function Item(props)
 {
     return (
@@ -112,16 +119,18 @@ export default function Carrusel(props){
           <Paper>
             <Grid container spacing={2}>
               <Grid item xs={8}>
-              <Typography gutterBottom variant="h4" component="div" className="TitleCarousel" >
-                {result1.title}
-              </Typography>
-              <Typography gutterBottom variant="subtitle2" component="div">
-                {result1.category.toUpperCase()}
-              </Typography>
-              <Rating name="read-only" value={result1.rating.rate} readOnly size="small"/>
-              <Button className="CheckButton">
-                  Ver más
-              </Button>
+                <Typography gutterBottom variant="h4" component="div" className="TitleCarousel" >
+                  {result1.title}
+                </Typography>
+                <Typography gutterBottom variant="subtitle2" component="div">
+                  {result1.category.toUpperCase()}
+                </Typography>
+                <Rating name="read-only" value={result1.rating.rate} readOnly size="small"/>
+                <Link to={`product/${result1.id}`}>
+                  <Button className="CheckButton">
+                      Ver más
+                  </Button>
+                </Link>
               </Grid>
               <Grid item xs={4}>
                 <CardMedia

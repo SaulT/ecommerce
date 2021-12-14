@@ -14,6 +14,13 @@ import Grid from '@mui/material/Grid';
 
 import { getAllProducts } from '../services/getAllProducts'
 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from 'react-router-dom'
+
 export default function Cards(){
   const [list, setList] = useState([]);
   const [ click, showList ] = useState(false)
@@ -82,9 +89,11 @@ export default function Cards(){
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      Ver más
-                    </Button>
+                    <Link to={`product/${result1.id}`}>
+                      <Button size="small" color="primary">
+                        Ver más
+                      </Button>
+                    </Link>
                   </CardActions>
                 </Card>
               </Paper>

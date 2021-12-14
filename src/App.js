@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Grid from './components/Grid';
+import Product from './components/Product';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Footer from './components/Footer';
@@ -34,6 +35,7 @@ function App() {
         </nav>
         <Routes>
           <Route path="/" element={<Home/>} />
+          <Route path="/product/:id" element={<Product/>} />
           <Route path="/signup" element={<Signup/>} />
           <Route path="/login" element={<Login/>} />
         </Routes>
